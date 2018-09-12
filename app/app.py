@@ -59,15 +59,70 @@ def displayEntry(num):
 
     #fetchone() gets us the right row as a list. We call the 0th element to remove the 
     #extra characters from before and after the name. title() makes only the 1st letter capitalized
-    title += cursor.fetchone()[0].title()
+    name = cursor.fetchone()[0].title()
 
+    title += name
 
+    #type_id, name from type_names
+    #pokemon_types is transitive table - have ids and type1/2
 
+    #get type ids first and store in array
+    cursor.execute("SELECT type_id from pokemon_types  where pokemon_id="+str(num))
+    typeArr = cursor.fetchall()
+
+    #get type1 in english
+    cursor.execute("SELECT name from type_names where local_language_id=9 AND type_id="+str(typeArr[0][0]))
+    type1 = cursor.fetchone()[0]
+    
+    #not all monsters have 2 types - need to check if there's 2 elements in tuple before operation 
+    
+    #default value
+    type2=""
+
+    if len(typeArr)==2:
+
+        #get type2 in English
+        cursor.execute("SELECT name from type_names where local_language_id=9 AND type_id="
+            +str(typeArr[1][0]))
+        type2 = cursor.fetchone()[0]
+
+       
 
     #need to go up a level with .. since this string will be used in the templates folder
     imgLocation = "../static/sprites/"+fileName+".gif"
 
-    return render_template("dex-entry.html", pageHeading=title, imgLocation=imgLocation)
+
+    #abilities
+    #id, identifier(name), generation_id
+    #pokemon_abilities
+    #pokemon_id, ability_id, is_hidden, slot (slot is 1 and 2 for normal, 3 for hidden)
+
+    cursor.execute("SELECT ability_id FROM pokemon_abilities where slot!=3 AND pokemon_id="+str(num))
+    abbArr = cursor.fetchall()
+
+    cursor.execute("SELECT identifier FROM abilities where id="+str(abbArr[0][0]))
+    ability1=cursor.fetchone()[0].title()
+
+    ability2=""
+    if len(abbArr)==2:
+        cursor.execute("SELECT identifier FROM abilities where id="+str(abbArr[1][0]))
+        ability2=cursor.fetchone()[0].title()
+
+
+    #not every monster has a hidden ability
+
+    cursor.execute("SELECT ability_id FROM pokemon_abilities where slot=3 AND pokemon_id="+str(num))
+    hidden=cursor.fetchone()
+    if hidden!=None:
+        hidden=hidden[0]
+        cursor.execute("SELECT identifier FROM abilities where id="+str(hidden))
+        hidden = cursor.fetchone()[0].title()
+    
+
+    return render_template("dex-entry.html", pageHeading=title, imgLocation=imgLocation, num=str(num), 
+        name=name, type1=type1, type2=type2, ability1=ability1, ability2=ability2, hidden=hidden)
+
+
 
 #runs the program
 if __name__ == "__main__":
