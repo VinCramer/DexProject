@@ -3,17 +3,29 @@
 
     <head>
         <title>{{pageHeading}}</title>
-        <link rel="icon" href="../static/images/favicon.png" type="image/png"> 
+        
+        <link rel="icon" href="../static/images/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="../static/css/types.css">
 
     </head>
 
     <body>
         <p>#{{num}}</p>
         <p>{{name}}</p>
+        
         <img src={{imgLocation}}>
-        <p>Type: {{type1}} {{type2}}</p>
-        <div>Abilities: {{ability1}}</div>
-        <div>{{ability2}}</div>
-        <div>Hidden:{{hidden}}</div>
+        <br>
+        <p id={{type1}}>{{type1}}</p>
+        <p id={{type2}}>{{type2}}</p>
+
+        <div>{{ability1}}</div>
+
+        {% if ability2 %}
+            <div>{{ability2}}</div>
+        {% endif %}
+
+        {% if hidden %}
+            <div>Hidden Ability: {{hidden}}</div>
+        {% endif %}
     </body>
 </html>

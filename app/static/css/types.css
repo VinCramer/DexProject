@@ -1,0 +1,203 @@
+#Water{
+    color:white;
+    background-color: #6390F0;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 40px;
+}
+
+#Psychic{
+    color:white;
+    background-color: #F95587;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 50px;
+}
+
+#Fire{
+    color:white;
+    background-color: #EE8130;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 28px;
+}
+
+#Normal{
+    color:white;
+    background-color: #A8A77A;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 51px;
+}
+
+#Electric{
+    color:white;
+    background-color: #F7D02C;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 51px;
+}
+
+#Grass{
+    color:white;
+    background-color: #7AC74C;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 40px;
+}
+
+#Ice{
+    color:white;
+    background-color: #96D9D6;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 22px;
+}
+
+#Fighting{
+    color:white;
+    background-color: #C22E28;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 55px;
+}
+
+#Poison{
+    color:white;
+    background-color: #A33EA1;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 45px;
+}
+
+#Ground{
+    color:white;
+    background-color: #E2BF65;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 50px;
+}
+
+#Flying{
+    color:white;
+    background-color: #A98FF3;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 45px;
+}
+
+#Bug{
+    color:white;
+    background-color: #A6B91A;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 30px;
+}
+
+#Rock{
+    color:white;
+    background-color: #B6A136;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 35px;
+}
+
+#Ghost{
+    color:white;
+    background-color: #735797;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 40px;
+}
+
+#Dragon{
+    color:white;
+    background-color: #6F35FC;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 50px;
+}
+
+#Dark{
+    color:white;
+    background-color: #705746;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 35px;
+}
+
+#Steel{
+    color:white;
+    background-color: #B7B7CE;
+    border-radius:5px;
+    border-color:black;
+    border-width:1px;
+    border-style: solid;
+    text-shadow: 1px 1px 0px #000000;
+    display:inline-block;
+    width: 35px;
+}

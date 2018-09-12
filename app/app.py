@@ -71,7 +71,8 @@ def displayEntry(num):
     typeArr = cursor.fetchall()
 
     #get type1 in english
-    cursor.execute("SELECT name from type_names where local_language_id=9 AND type_id="+str(typeArr[0][0]))
+    cursor.execute("SELECT name from type_names where local_language_id=9 AND type_id="
+        +str(typeArr[0][0]))
     type1 = cursor.fetchone()[0]
     
     #not all monsters have 2 types - need to check if there's 2 elements in tuple before operation 
@@ -118,6 +119,13 @@ def displayEntry(num):
         cursor.execute("SELECT identifier FROM abilities where id="+str(hidden))
         hidden = cursor.fetchone()[0].title()
     
+    #minor nuance with the display - displaying "Ability 1" when the monster only has 1  
+    #normal ability is bad form.
+    if ability2=="":
+        ability1="Ability: "+ability1
+    else:
+        ability1="Ability 1: "+ability1
+        ability2="Ability 2: "+ability2
 
     return render_template("dex-entry.html", pageHeading=title, imgLocation=imgLocation, num=str(num), 
         name=name, type1=type1, type2=type2, ability1=ability1, ability2=ability2, hidden=hidden)
