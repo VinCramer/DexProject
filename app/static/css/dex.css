@@ -1,0 +1,50 @@
+#outer-container{
+    padding: 50px;
+    margin: 75px;
+}
+
+body{
+    background-color: #606060;
+}
+
+#monPic{
+    margin-left: auto;
+    margin-right:auto;
+    display:block;
+}
+
+#top-dex{
+    overflow:hidden; 
+    background-color:#FF0000;
+    border-bottom:30px solid black; 
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#stylized-name{
+    float:left; 
+    background-color: #3399ff; 
+    padding: 25px;
+    color:white; 
+    font-size:50px;
+    margin:75px;border-radius:15px;
+    text-shadow: 1px 1px 0px #000000;
+    border:3px solid white;
+}
+
+#med-dex{
+    background-color:red; 
+    padding: 25px;
+}
+
+#img-container{
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right:150px;
+    margin-left:150px;
+    background-color: #cce5ff; 
+    padding: 60px;
+    border:40px solid #FFFFFF; 
+    border-bottom-left-radius: 70px;
+}

@@ -123,9 +123,21 @@ def displayEntry(num):
     #normal ability is bad form.
     if ability2=="":
         ability1="Ability: "+ability1
+
+    #there's a few monsters that erroneously have the same ability listed twice
+    elif ability1==ability2: 
+        ability2=""
+        ability1="Ability: "+ability1
     else:
         ability1="Ability 1: "+ability1
         ability2="Ability 2: "+ability2
+
+    #certain abilities are made of 2 words and have a dash in between them. This removes the dash 
+    # if needed.
+    ability1=ability1.replace("-", " ")
+    ability2=ability2.replace("-", " ")
+    if hidden!=None:
+        hidden=hidden.replace("-", " ")
 
     return render_template("dex-entry.html", pageHeading=title, imgLocation=imgLocation, num=str(num), 
         name=name, type1=type1, type2=type2, ability1=ability1, ability2=ability2, hidden=hidden)

@@ -6,15 +6,27 @@
         
         <link rel="icon" href="../static/images/favicon.ico">
         <link rel="stylesheet" type="text/css" href="../static/css/types.css">
-
+        <link rel="stylesheet" type="text/css" href="../static/css/dex.css">
     </head>
 
     <body>
-        <p>#{{num}}</p>
-        <p>{{name}}</p>
+        <div id="outer-container">
+
+
+            <div id="top-dex">
+                <div id="stylized-name">{{name}}</div>
+            </div>
+
+        <div id="med-dex">
+            <div id="img-container">
+                <div><img id="monPic" src={{imgLocation}}></div>
+
+            </div>
+
+        </div>
         
-        <img src={{imgLocation}}>
-        <br>
+    </div>
+        
         <p id={{type1}}>{{type1}}</p>
         <p id={{type2}}>{{type2}}</p>
 
