@@ -6,8 +6,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 40px;
+    display:inline;
+    margin:auto;
+    text-align:center;
+    padding-right:3px;
+    padding-bottom:2px;
+    padding-left:1px;
 }
 
 #Psychic{
@@ -18,8 +22,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 50px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-right:2px;
+    padding-bottom:2px;
+    padding-left:1px;
 }
 
 #Fire{
@@ -30,8 +38,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 28px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-right:3px;
+    padding-bottom:2px;
+    padding-left:1px;
 }
 
 #Normal{
@@ -42,8 +54,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 51px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-right:3px;
+    padding-left:1px;
 }
 
 #Electric{
@@ -54,8 +70,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 51px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-right:2px;
+    padding-left:1px;
 }
 
 #Grass{
@@ -66,8 +86,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 40px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-right:2px;
+    padding-bottom:2px;
+    padding-left:1px;
 }
 
 #Ice{
@@ -78,8 +102,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 22px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-right:3px;
+    padding-left:1px;
 }
 
 #Fighting{
@@ -90,8 +118,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 55px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-left:1px;
+    padding-right:2px;
 }
 
 #Poison{
@@ -102,8 +134,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 45px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-left:1px;
+    padding-right:1px;
 }
 
 #Ground{
@@ -114,8 +150,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 50px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-left:1px;
+    padding-right:3px;
 }
 
 #Flying{
@@ -126,8 +166,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 45px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-right:2px;
+    padding-bottom:2px;
+    padding-left:1px;
 }
 
 #Bug{
@@ -138,8 +182,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 30px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-left:1px;
+    padding-right:3px;
 }
 
 #Rock{
@@ -150,8 +198,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 35px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-left:1px;
+    padding-right:3px;
 }
 
 #Ghost{
@@ -162,8 +214,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 40px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-left:1px;
+    padding-right:2px;
 }
 
 #Dragon{
@@ -174,8 +230,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 50px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-left:1px;
+    padding-right:2px;
 }
 
 #Dark{
@@ -186,8 +246,12 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 35px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-left:1px;
+    padding-right:3px;
 }
 
 #Steel{
@@ -198,6 +262,10 @@
     border-width:1px;
     border-style: solid;
     text-shadow: 1px 1px 0px #000000;
-    display:inline-block;
-    width: 35px;
+    display:inline;
+    text-align:center;
+    margin:auto;
+    padding-bottom:2px;
+    padding-left:1px;
+    padding-right:2px;
 }

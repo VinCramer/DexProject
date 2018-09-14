@@ -43,8 +43,24 @@ body{
     margin-bottom: 20px;
     margin-right:150px;
     margin-left:150px;
-    background-color: #cce5ff; 
+    background-color:#79c9ec;
     padding: 60px;
     border:40px solid #FFFFFF; 
     border-bottom-left-radius: 70px;
+}
+
+#data{
+    margin-top:75px;
+    margin-bottom: 20px;
+    margin-right:150px;
+    margin-left:150px;
+    background-color:#79c9ec;
+    text-align:center;
+    padding: 15px;
+    border-radius:5px;
+}
+
+.text{
+    color:white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }

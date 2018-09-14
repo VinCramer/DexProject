@@ -104,18 +104,46 @@ def displayEntry(num):
     cursor.execute("SELECT identifier FROM abilities where id="+str(abbArr[0][0]))
     ability1=cursor.fetchone()[0].title()
 
+    cursor.execute("SELECT flavor_text FROM ability_flavor_text where language_id=9 AND ability_id="
+        +str(abbArr[0][0]))
+    
+    #abilities can be in different languages or have different wording. 1st is 
+    # sufficient for this project.
+    ability1Flavor=cursor.fetchall()[0][0]
+
+
     ability2=""
+    ability2Flavor=""
     if len(abbArr)==2:
         cursor.execute("SELECT identifier FROM abilities where id="+str(abbArr[1][0]))
         ability2=cursor.fetchone()[0].title()
+
+        cursor.execute("SELECT flavor_text FROM ability_flavor_text where language_id=9 AND ability_id="
+            +str(abbArr[1][0]))
+        ability2Flavor=cursor.fetchall()[0][0]
+
 
 
     #not every monster has a hidden ability
 
     cursor.execute("SELECT ability_id FROM pokemon_abilities where slot=3 AND pokemon_id="+str(num))
     hidden=cursor.fetchone()
+    hiddenFlavor=""
     if hidden!=None:
+
         hidden=hidden[0]
+
+        #want to get the description of the hidden ability if there is a hidden ability
+        cursor.execute("SELECT flavor_text FROM ability_flavor_text where language_id=9 AND "+
+            "ability_id="+str(hidden))
+
+        #if cursor got something from our query, we have a hidden ability, which has a description
+        if cursor.fetchone()!=None:
+
+            #there's multiple descriptions from multiple generations and languages, but the 1st is 
+            # always in English, which is good enough for our purposes
+            hiddenFlavor=cursor.fetchall()[0][0]
+
         cursor.execute("SELECT identifier FROM abilities where id="+str(hidden))
         hidden = cursor.fetchone()[0].title()
     
@@ -139,8 +167,11 @@ def displayEntry(num):
     if hidden!=None:
         hidden=hidden.replace("-", " ")
 
-    return render_template("dex-entry.html", pageHeading=title, imgLocation=imgLocation, num=str(num), 
-        name=name, type1=type1, type2=type2, ability1=ability1, ability2=ability2, hidden=hidden)
+    #TODO - dex entries. They are in species flavor text table.
+
+    return render_template("dex-entry.html", pageHeading=title, imgLocation=imgLocation, name=name, 
+        type1=type1, type2=type2, ability1=ability1, ability2=ability2, hidden=hidden, 
+        ability1Flavor=ability1Flavor, ability2Flavor=ability2Flavor, hiddenFlavor=hiddenFlavor)
 
 
 

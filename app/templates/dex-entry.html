@@ -17,27 +17,42 @@
                 <div id="stylized-name">{{name}}</div>
             </div>
 
-        <div id="med-dex">
-            <div id="img-container">
-                <div><img id="monPic" src={{imgLocation}}></div>
+            <div id="med-dex">
+                <div id="img-container">
+                    <div><img id="monPic" src={{imgLocation}}></div>
 
+                </div>
+
+                <div id="data">
+                    
+                    <div id="type">
+                        <h1 id={{type1}}>{{type1}}</h1>
+                        <h1 id={{type2}}>{{type2}}</h1>
+                    </div>
+
+                    <div id="abilities">
+                            <h1 class="text">{{ability1}}</h1>
+                            <h2 class="text">{{ability1Flavor}}</h2>
+
+                            {% if ability2 %}
+                                <h1 class="text">{{ability2}}</h1>
+                                <h2 class="text">{{ability2Flavor}}</h2>
+                            {% endif %}
+                    
+                            {% if hidden %}
+                                <h1 class="text">Hidden Ability: {{hidden}}</h1>
+                                <h2 class="text">{{hiddenFlavor}}</h2>
+                            {% endif %}
+
+                    </div>
+
+                </div>
+            
             </div>
+        
+        
 
         </div>
-        
-    </div>
-        
-        <p id={{type1}}>{{type1}}</p>
-        <p id={{type2}}>{{type2}}</p>
 
-        <div>{{ability1}}</div>
-
-        {% if ability2 %}
-            <div>{{ability2}}</div>
-        {% endif %}
-
-        {% if hidden %}
-            <div>Hidden Ability: {{hidden}}</div>
-        {% endif %}
     </body>
 </html>
