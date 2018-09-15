@@ -90,7 +90,7 @@ def displayEntry(num):
        
 
     #need to go up a level with .. since this string will be used in the templates folder
-    imgLocation = "../static/sprites/"+fileName+".gif"
+    imgLocation = "../static/sprites/gif/"+fileName+".gif"
 
 
     #abilities
@@ -167,11 +167,108 @@ def displayEntry(num):
     if hidden!=None:
         hidden=hidden.replace("-", " ")
 
-    #TODO - dex entries. They are in species flavor text table.
+    # language id=9 is for English. Version_id=22 is not the same dex entry data across generations, 
+    # but it's valid for all of the monsters.
+    cursor.execute("SELECT flavor_text FROM pokemon_species_flavor_text where language_id=9 "+
+        "AND version_id=22 AND species_id="+str(num))
+    speciesFlavor = cursor.fetchone()[0]
 
+    #want user to easily choose between the next and previous entries in the dex
+    prevName=""
+    nextName=""
+    prevImg=""
+    nextImg=""
+
+    #if user is at the first entry, there's no entry before that
+    if num-1>0:
+        cursor.execute("SELECT identifier FROM pokemon_species where id="+str(num-1))
+        prevName = cursor.fetchone()[0].title()
+        prevImg="../static/sprites/pc-sprites/"+prevName+".png"
+
+    #if user is at last entry, there's no entry behind that
+    if num+1<649:
+        cursor.execute("SELECT identifier FROM pokemon_species where id="+str(num+1))
+        nextName = cursor.fetchone()[0].title()
+        nextImg="../static/sprites/pc-sprites/"+nextName+".png"
+    
+    #gets lists of numbers and names of monsters for each generation to be displayed in select tags
+    list1=getGen1(cursor)
+    list2=getGen2(cursor)
+    list3=getGen3(cursor)
+    list4=getGen4(cursor)
+    list5=getGen5(cursor)
+
+    
+
+
+    #displays the webpage with all given variables
     return render_template("dex-entry.html", pageHeading=title, imgLocation=imgLocation, name=name, 
         type1=type1, type2=type2, ability1=ability1, ability2=ability2, hidden=hidden, 
-        ability1Flavor=ability1Flavor, ability2Flavor=ability2Flavor, hiddenFlavor=hiddenFlavor)
+        ability1Flavor=ability1Flavor, ability2Flavor=ability2Flavor, hiddenFlavor=hiddenFlavor, 
+        speciesFlavor=speciesFlavor, prevNum=num-1, nextNum=num+1, prevName=prevName, nextName=nextName,
+        prevImg=prevImg, nextImg=nextImg, list1=list1, list2=list2, list3=list3, list4=list4, 
+        list5=list5)
+
+
+#returns a list, where each item is the number and name of a monster from gen 1 (1-151)
+def getGen1(cursor):
+    cursor.execute("SELECT pokemon_species_id, name FROM pokemon_species_names WHERE "
+    +"local_language_id=9 AND pokemon_species_id<152")
+    genList= cursor.fetchall()
+    realList=[]
+    for val in genList:
+        tempString=str(val[0]) + " - " + str(val[1])
+        if val[0]<10:
+            tempString="00"+tempString
+        elif val[0]<100:
+            tempString="0"+tempString
+        realList.append(tempString)
+    return realList
+    
+
+#returns a list, where each item is the number and name of a monster from gen 2 (152-251)
+def getGen2(cursor):
+    cursor.execute("SELECT pokemon_species_id, name FROM pokemon_species_names WHERE "
+    +"local_language_id=9 AND pokemon_species_id>=152 AND pokemon_species_id<252")
+    genList= cursor.fetchall()
+    realList=[]
+    for val in genList:
+        tempString=str(val[0]) + " - " + str(val[1])
+        realList.append(tempString)
+    return realList
+
+#returns a list, where each item is the number and name of a monster from gen 3 (252-386)
+def getGen3(cursor):
+    cursor.execute("SELECT pokemon_species_id, name FROM pokemon_species_names WHERE "
+    +"local_language_id=9 AND pokemon_species_id>=252 AND pokemon_species_id<387")
+    genList= cursor.fetchall()
+    realList=[]
+    for val in genList:
+        tempString=str(val[0]) + " - " + str(val[1])
+        realList.append(tempString)
+    return realList
+
+#returns a list, where each item is the number and name of a monster from gen 4 (387-493)
+def getGen4(cursor):
+    cursor.execute("SELECT pokemon_species_id, name FROM pokemon_species_names WHERE "
+    +"local_language_id=9 AND pokemon_species_id>=387 AND pokemon_species_id<494")
+    genList= cursor.fetchall()
+    realList=[]
+    for val in genList:
+        tempString=str(val[0]) + " - " + str(val[1])
+        realList.append(tempString)
+    return realList
+
+#returns a list, where each item is the number and name of a monster from gen 5 (494-649)
+def getGen5(cursor):
+    cursor.execute("SELECT pokemon_species_id, name FROM pokemon_species_names WHERE "
+    +"local_language_id=9 AND pokemon_species_id>=494")
+    genList= cursor.fetchall()
+    realList=[]
+    for val in genList:
+        tempString=str(val[0]) + " - " + str(val[1])
+        realList.append(tempString)
+    return realList
 
 
 

@@ -10,6 +10,41 @@
     </head>
 
     <body>
+
+        <div align="center" id="groupSelectors">
+            <select name="Gen 1" class="topSelect">
+                {% for item in list1 %}
+                <option>{{item}}</option>
+                {% endfor %}
+            </select>
+
+            <select name="Gen 2" class="topSelect">
+                    {% for item in list2 %}
+                    <option>{{item}}</option>
+                    {% endfor %}
+            </select>
+
+            <select name="Gen 3" class="topSelect">
+                    {% for item in list3 %}
+                    <option>{{item}}</option>
+                    {% endfor %}
+            </select>
+
+            <select name="Gen 4" class="topSelect">
+                    {% for item in list4 %}
+                    <option>{{item}}</option>
+                    {% endfor %}
+            </select>
+
+            <select name="Gen 5" class="topSelect">
+                    {% for item in list5 %}
+                    <option>{{item}}</option>
+                    {% endfor %}
+            </select>
+
+        </div>
+
+
         <div id="outer-container">
 
 
@@ -46,6 +81,10 @@
 
                     </div>
 
+                    <div>
+                        <h1 class="text">Data: {{speciesFlavor}}</h1>
+                    </div>
+
                 </div>
             
             </div>
@@ -53,6 +92,33 @@
         
 
         </div>
+
+        {% if prevNum>0 %}
+            <a href="/{{prevNum}}">
+                <button class="button" id="prev">
+                    <i class="left outerArrow"></i>
+                    <i class="left innerArrow"></i>
+                    #{{prevNum}} 
+                    {{prevName}}
+                    <img src={{prevImg}}>
+                </button>
+            </a>
+        {% endif %}
+
+        {% if nextNum<649 %}
+            <a href="/{{nextNum}}">
+                <button class="button" id="next">
+                    
+                    #{{nextNum}}
+                    
+                    {{nextName}}
+                    <img src={{nextImg}}>
+                    <i class="right innerArrow"></i>
+                    <i class="right outerArrow"></i>
+                    
+                </button>
+            </a>
+        {%endif%}
 
     </body>
 </html>
