@@ -7,39 +7,40 @@
         <link rel="icon" href="../static/images/favicon.ico">
         <link rel="stylesheet" type="text/css" href="../static/css/types.css">
         <link rel="stylesheet" type="text/css" href="../static/css/dex.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/stats.css">
     </head>
 
     <body>
 
         <div align="center" id="groupSelectors">
-            <select name="Gen 1" class="topSelect">
+            <select name="Gen 1" class="topSelect" onchange="location=this.value">
                 {% for item in list1 %}
-                <option>{{item}}</option>
+                    <option value="/{{loop.index}}">{{item}} </option>
                 {% endfor %}
             </select>
 
-            <select name="Gen 2" class="topSelect">
-                    {% for item in list2 %}
-                    <option>{{item}}</option>
-                    {% endfor %}
+            <select name="Gen 2" class="topSelect" onchange="location=this.value">
+                {% for item in list2 %}
+                    <option value="/{{loop.index+151}}">{{item}}</option>
+                {% endfor %}
             </select>
 
-            <select name="Gen 3" class="topSelect">
-                    {% for item in list3 %}
-                    <option>{{item}}</option>
-                    {% endfor %}
+            <select name="Gen 3" class="topSelect" onchange="location=this.value">
+                {% for item in list3 %}
+                    <option value="/{{loop.index+251}}">{{item}}</option>
+                {% endfor %}
             </select>
 
-            <select name="Gen 4" class="topSelect">
-                    {% for item in list4 %}
-                    <option>{{item}}</option>
-                    {% endfor %}
+            <select name="Gen 4" class="topSelect" onchange="location=this.value">
+                {% for item in list4 %}
+                    <option value="/{{loop.index+386}}">{{item}}</option>
+                {% endfor %}
             </select>
 
-            <select name="Gen 5" class="topSelect">
-                    {% for item in list5 %}
-                    <option>{{item}}</option>
-                    {% endfor %}
+            <select name="Gen 5" class="topSelect" onchange="location=this.value">
+                {% for item in list5 %}
+                    <option value="/{{loop.index+493}}">{{item}}</option>
+                {% endfor %}
             </select>
 
         </div>
@@ -84,6 +85,48 @@
                     <div>
                         <h1 class="text">Data: {{speciesFlavor}}</h1>
                     </div>
+
+                    <div style="text-align:left;">
+                        <table>
+                            <tr>
+                                <td><h1 class="text statText">HP: </h1></td> 
+                                <td><h1 class="text statText">{{hp}}</h1></td>
+                                <td><div class="{{hpClass}}" style="width:{{hp}}px;"></div></td>
+                            </tr>
+                    
+                            <tr>
+                                <td><h1 class="text statText">ATK: </h1></td>
+                                <td><h1 class="text statText">{{atk}}</h1></td>
+                                <td><div class="{{atkClass}}" style="width:{{atk}}px;"></div></td>
+                            </tr>
+                        
+                            <tr>
+                                <td><h1 class="text statText">SP. ATK: </h1></td> 
+                                <td><h1 class="text statText">{{spAtk}}</h1></td>
+                                <td><div class="{{spAtkClass}}" style="width:{{spAtk}}px;"></div></td>
+                            </tr>
+
+                            <tr>
+                                <td><h1 class="text statText">DEF: </h1></td> 
+                                <td><h1 class="text statText">{{defense}}</h1></td>
+                                <td><div class="{{defenseClass}}" style="width:{{defense}}px;"></div></td>
+                            </tr>
+
+                            <tr>
+                                <td><h1 class="text statText">SP. DEF: </h1></td> 
+                                <td><h1 class="text statText">{{spDef}}</h1></td>
+                                <td><div class="{{spDefClass}}" style="width:{{spDef}}px;"></div></td>
+                            </tr>
+                                    
+                            <tr>
+                                <td><h1 class="text statText">SPD: </h1></td> 
+                                <td><h1 class="text statText">{{spd}}</h1></td>
+                                <td><div class="{{spdClass}}" style="width:{{spd}}px;"></div></td>
+                            </tr>
+
+                        </table>
+                    </div>
+
 
                 </div>
             

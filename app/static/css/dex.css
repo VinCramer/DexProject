@@ -131,3 +131,7 @@ button:hover {
     display:inline-block;
     width:100%;
 }
+
+.mainPageText{
+    display:inline;
+}

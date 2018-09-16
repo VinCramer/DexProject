@@ -7,10 +7,26 @@ app = Flask(__name__)
 #location of the database file we're loading from
 DATABASE = 'static/database/pokedex.sqlite'
 
-#basic homepage - will edit to display buttons to go to each dex entry
-#@app.route("/")
-#def hello():
-#    return "homepage"
+#basic homepage
+#TODO- make it look nicer
+@app.route("/")
+def home():
+    #accesses a cursor from the database
+    cursor=get_db().cursor()
+
+    #gets lists of numbers and names of monsters for each generation to be displayed in select tags
+    list1=getGen1(cursor)
+    list2=getGen2(cursor)
+    list3=getGen3(cursor)
+    list4=getGen4(cursor)
+    list5=getGen5(cursor)
+
+    return render_template("index.html", list1=list1, list2=list2, list3=list3, list4=list4, list5=list5)
+
+#404 error handling
+@app.errorhandler(404)
+def page_not_found():
+    return render_template("404.html")
 
 #Loads the database
 def get_db():
@@ -34,7 +50,7 @@ def displayEntry(num):
     #if the user enters an invalid value, we'll show them an error message
     #invalid values are 0, negative, and any pokemon from after gen 5
     if num<=0 or num > 649:
-        return "<h1>Enter a valid pokemon number</h1>"
+        return render_template("404.html")
 
     #need to convert the number to a string when trying to access its image
     fileName = str(num)
@@ -52,6 +68,7 @@ def displayEntry(num):
 
     #accesses a cursor from the database
     cursor=get_db().cursor()
+
     cursor.execute("SELECT identifier FROM pokemon_species where id="+str(num))
     
     #string that will be the title of the webpage
@@ -198,7 +215,25 @@ def displayEntry(num):
     list4=getGen4(cursor)
     list5=getGen5(cursor)
 
-    
+    #gets the stat values and classifications for each stat
+    hp=getStat(cursor, num, 1)
+    hpClass=getStatClass(hp)
+
+    atk=getStat(cursor, num, 2)
+    atkClass=getStatClass(atk)
+
+    defense=getStat(cursor, num, 3)
+    defenseClass=getStatClass(defense)
+
+    spAtk=getStat(cursor, num, 4)
+    spAtkClass=getStatClass(spAtk)
+
+
+    spDef=getStat(cursor, num, 5)
+    spDefClass=getStatClass(spDef)
+
+    spd=getStat(cursor, num, 6)
+    spdClass=getStatClass(spd)
 
 
     #displays the webpage with all given variables
@@ -207,7 +242,9 @@ def displayEntry(num):
         ability1Flavor=ability1Flavor, ability2Flavor=ability2Flavor, hiddenFlavor=hiddenFlavor, 
         speciesFlavor=speciesFlavor, prevNum=num-1, nextNum=num+1, prevName=prevName, nextName=nextName,
         prevImg=prevImg, nextImg=nextImg, list1=list1, list2=list2, list3=list3, list4=list4, 
-        list5=list5)
+        list5=list5, hp=hp, hpClass=hpClass, atk=atk, spAtk=spAtk, spDef=spDef, defense=defense, spd=spd,
+        spdClass=spdClass, atkClass=atkClass, spAtkClass=spAtkClass, spDefClass=spDefClass, 
+        defenseClass=defenseClass)
 
 
 #returns a list, where each item is the number and name of a monster from gen 1 (1-151)
@@ -270,6 +307,26 @@ def getGen5(cursor):
         realList.append(tempString)
     return realList
 
+#returns the stat value for the monster at the given index
+#stat id 1->HP
+#stat id 2->ATK
+#stat id 3->DEF
+#stat id 4->SP> ATK
+#stat id 5->SP. DEF
+#stat id 6->SPD
+def getStat(cursor, num, statNum):
+    cursor.execute("SELECT base_stat FROM pokemon_stats WHERE stat_id="+str(statNum)+
+        " AND pokemon_id="+str(num))
+    return cursor.fetchone()[0]
+
+#returns name of styling class depending on what the value of the stat is
+def getStatClass(stat):
+    if stat<70:
+        return "redStat"
+    elif stat<100:
+        return "yellowStat"
+    else:
+        return "greenStat"
 
 
 #runs the program

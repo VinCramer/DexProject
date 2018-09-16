@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Dex Homepage</title>
+        <link rel="icon" href="../static/images/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="../static/css/dex.css">
+    </head>
+
+    <body>
+
+        <h1 class="text">Welcome to the Dex Project!</h1>
+        <h3 class="text mainPageText">This is a website made in </h3>
+            <a href="https://www.python.org/download/releases/3.0/">Python </a> <h3 class="text mainPageText">using the</h3> 
+            <a href="http://flask.pocoo.org/"> Flask framework.</a>
+        </h3>
+        <h3 class="text">This website contains the name, number, types, base stats, and species data for over 
+            650 monsters.</h3>
+
+        <div align="center" id="groupSelectors">
+            <select name="Gen 1" class="topSelect" onchange="location=this.value">
+                {% for item in list1 %}
+                    <option value="/{{loop.index}}">{{item}} </option>
+                {% endfor %}
+            </select>
+        
+            <select name="Gen 2" class="topSelect" onchange="location=this.value">
+                {% for item in list2 %}
+                    <option value="/{{loop.index+151}}">{{item}}</option>
+                {% endfor %}
+            </select>
+        
+            <select name="Gen 3" class="topSelect" onchange="location=this.value">
+                {% for item in list3 %}
+                    <option value="/{{loop.index+251}}">{{item}}</option>
+                {% endfor %}
+            </select>
+        
+            <select name="Gen 4" class="topSelect" onchange="location=this.value">
+                {% for item in list4 %}
+                    <option value="/{{loop.index+386}}">{{item}}</option>
+                {% endfor %}
+            </select>
+        
+            <select name="Gen 5" class="topSelect" onchange="location=this.value">
+                {% for item in list5 %}
+                    <option value="/{{loop.index+493}}">{{item}}</option>
+                        {% endfor %}
+                </select>
+        
+        </div>
+
+
+    </body>
+
+
+
+</html>
