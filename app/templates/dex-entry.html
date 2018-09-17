@@ -12,7 +12,7 @@
 
     <body>
 
-        <div align="center" id="groupSelectors">
+        <div  id="groupedSelectors">
             <select name="Gen 1" class="topSelect" onchange="location=this.value">
                 {% for item in list1 %}
                     <option value="/{{loop.index}}">{{item}} </option>
@@ -86,7 +86,7 @@
                         <h1 class="text">Data: {{speciesFlavor}}</h1>
                     </div>
 
-                    <div style="text-align:left;">
+                    <div id="statDisplay">
                         <table>
                             <tr>
                                 <td><h1 class="text statText">HP: </h1></td> 
@@ -127,6 +127,328 @@
                         </table>
                     </div>
 
+                    <div>
+                        <!--Handles an edge case where order is 3-1-2-->
+                        {% if ev_id==51 %}
+                        <h1 class="text">Family tree:</h1>
+                        <table id="familyTree">
+                        
+                        <tr>
+                            <td><img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td><h3 class="text">{{familyTuple[2][1]|title}}</h3></td>
+                        </tr>
+                    
+                        <tr>
+                            <td id="downArrowRow"><i class="downArrow down"></i></td>
+                        </tr>
+
+                        <tr>
+                            <td><img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><h3 class="text">{{familyTuple[0][1]|title}}</h3></td>
+                        </tr>
+                        
+                        <tr>
+                            <td id="downArrowRow"><i class="downArrow down"></i></td>
+                        </tr>
+
+                        <tr>
+                            <td><img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif"></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><h3 class="text">{{familyTuple[1][1]|title}}</h3></td>
+                         </tr>
+                        
+
+                        </table>
+
+                        <!--Handles edge cases where last added is first chronologically-->
+                        {% elif differentEvoOrder %}
+                        <h1 class="text">Family tree:</h1>
+                        <table id="familyTree">
+                            {% if familyTuple[0][0]== 25 or familyTuple[0][0]== 35 or familyTuple[0][0]== 39 or
+                                familyTuple[0][0]== 183 %}
+                            <tr>
+                                <td><img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></td></td>
+                            </tr>
+                            <tr>
+                                <td><h3 class="text">{{familyTuple[2][1]|title}}</h3></td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td><img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif"></td></td>
+                            </tr>
+                            <tr>
+                                <td><h3 class="text">{{familyTuple[1][1]|title}}</h3></td>
+                            </tr>
+                            {% endif %}
+
+                            <tr>
+                                <td id="downArrowRow"><i class="downArrow down"></i></td>
+                            </tr>
+                            
+                            <tr>
+                                {% if familyTuple[0][0]<100 %}
+                                <td><img src="../static/sprites/gif/0{{familyTuple[0][0]}}.gif"></td></td>
+                                {% else %}
+                                <td><img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></td></td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td><h3 class="text">{{familyTuple[0][1]|title}}</h3></td>
+                            </tr>
+                            {% if familyTuple|length ==3 %}
+                            <tr>
+                                <td id="downArrowRow"><i class="downArrow down"></i></td>
+                            </tr>
+
+                            {% if familyTuple[0][0]== 25 or familyTuple[0][0]== 35 or 
+                                familyTuple[0][0]== 39 or familyTuple[0][0]== 183 %}
+                            <tr>
+                                {% if familyTuple[1][0]<100 %}
+                                <td><img src="../static/sprites/gif/0{{familyTuple[1][0]}}.gif"></td></td>
+                                {% else %}
+                                <td><img src="../static/sprites/gif/{{familyTuple[q][0]}}.gif"></td></td>
+                                {% endif %}
+                                </tr>
+                            <tr>
+                                        <td><h3 class="text">{{familyTuple[1][1]|title}}</h3></td>
+                                    </tr>
+                                {% else %}
+                            <tr>
+                                {% if familyTuple[2][0]<100 %}
+                                <td><img src="../static/sprites/gif/0{{familyTuple[2][0]}}.gif"></td></td>
+                                {% else %}
+                                <td><img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></td></td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td><h3 class="text">{{familyTuple[2][1]|title}}</h3></td>
+                            </tr>
+                            {% endif %}
+                            {% endif %}
+                        </table>
+
+                        <!--Handles most normal cases-->
+                        {% elif (familyTuple|length==3 or familyTuple|length==2) and not oneTwoSplit %}
+                            <h1 class="text">Family tree:</h1>
+                            <table id="familyTree">
+                                {% for item in familyTuple %}
+                                <tr>
+                                    {% if item[0] < 10 %}
+                                    <td><img src="../static/sprites/gif/00{{item[0]}}.gif"></td>
+                                    {% elif item[0] < 100 %}
+                                    <td><img src="../static/sprites/gif/0{{item[0]}}.gif"></td>
+                                    {% else %}
+                                    <td><img src="../static/sprites/gif/{{item[0]}}.gif"></td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td><h3 class="text">{{item[1]|title}}</h3></td>
+                                </tr>
+                                    {% if loop.index0 < familyTuple|length-1 %}
+                                    <tr>
+                                        <td id="downArrowRow"><i class="downArrow down"></i></td>
+                                    </tr>
+                                    
+                                    {% endif %}
+                                {% endfor %}
+                            </table>
+
+                        <!--Handle edge case: 1 monster into 3 separate monsters-->
+                        {% elif ev_id==47%}
+                        <h1 class="text">Family tree:</h1>
+                            <table id="familyTree">
+                                <tr>
+                                    <td colspan=3>
+                                        <img src="../static/sprites/gif/236.gif"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan=3><h3 class="text">{{familyTuple[2][1]|title}}</h3></td>
+                                </tr>
+                                <tr>
+                                    <td colspan=3 id="downArrowRow"><i class="downArrow down"></i></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="sameRow"><img src="../static/sprites/gif/106.gif"></td>
+                                    <td class="sameRow"><img src="../static/sprites/gif/107.gif"></td>
+                                    <td class="sameRow"><img src="../static/sprites/gif/237.gif"></td>
+                                </tr>
+                                <tr>
+                                    <td><h3 class="text sameRow">{{familyTuple[0][1]|title}}</td>
+                                    <td><h3 class="text sameRow">{{familyTuple[1][1]|title}}</td>
+                                    <td><h3 class="text sameRow">{{familyTuple[3][1]|title}}</td>
+                                </tr>
+                            </table>
+                        
+                        <!--Handle most split evolutions-->
+                        {% elif familyTuple|length>=3 and ev_id!=135 and ev_id!=67 and (not oneTwoSplit)%}
+                            <h1 class="text">Family tree:</h1>
+                            <table id="familyTree">
+    
+                            <tr>
+                                <td colspan="2">
+                                    {% if familyTuple[0][0]<100 %}
+                                    <img src="../static/sprites/gif/0{{familyTuple[0][0]}}.gif"></td>
+                                    {%else%}
+                                    <img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></td>
+                                    {%endif%}
+                            </tr>
+                            <tr>
+                                <td colspan="2"><h3 class="text">{{familyTuple[0][1]|title}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" id="downArrowRow"><i class="downArrow down"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                        {% if familyTuple[1][0]<100 %}
+                                        <img src="../static/sprites/gif/0{{familyTuple[1][0]}}.gif"></td>
+                                        {%else%}
+                                        <img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif"></td>
+                                        {%endif%}
+                            </tr>
+                            <tr>
+                                <td colspan="2"><h3 class="text">{{familyTuple[1][1]|title}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" id="downArrowRow"><i class="downArrow down"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td class="sameRow">
+                                    {% if familyTuple[2][0]<100 %}
+                                    <img src="../static/sprites/gif/0{{familyTuple[2][0]}}.gif"></td>
+                                    {%else%}
+                                    <img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></td>
+                                    {%endif%}
+                                <td class="sameRow">
+                                    <img src="../static/sprites/gif/{{familyTuple[3][0]}}.gif"></td>
+                            </tr>
+                            <tr>
+                                <td ><h3 class="text">{{familyTuple[2][1]|title}}</td>
+                                <td ><h3 class="text">{{familyTuple[3][1]|title}}</td>
+                            </tr>
+                        </table>
+
+                        <!--Need to handle 1->2, and 1>3 cases.-->
+                        {% elif oneTwoSplit%}
+                        <h1 class="text">Family tree:</h1>
+                        <table id="familyTree">
+                        <tr>
+                            {% if familyTuple[0][0]<100 %}
+                                <td colspan="2"><img src="../static/sprites/gif/0{{familyTuple[0][0]}}.gif"></td>
+                            {%else%}
+                                <td colspan="2"><img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></td>
+                            {%endif%}
+                        </tr>
+                            <td colspan="2"><h3 class="text">{{familyTuple[0][1]|title}}</td>                        
+                        <tr>
+                            <td colspan="2" id="downArrowRow"><i class="downArrow down"></i></td>
+                        </tr>
+
+                        <tr>
+                            <td class="sameRow">
+                                {% if familyTuple[1][0]<100 %}
+                                    <img src="../static/sprites/gif/0{{familyTuple[1][0]}}.gif">
+                                {% else %}
+                                    <img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif">
+                                {%endif%}
+                            </td>
+                            <td class="sameRow">
+                                <img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="sameRow"><h3 class="text">{{familyTuple[1][1]|title}}</td>
+                            <td class="sameRow"><h3 class="text">{{familyTuple[2][1]|title}}</td>
+                        </tr>
+                        </table>
+                        
+
+                        <!--Handle edge case: 2 completely different evolution paths-->
+                        {% elif familyTuple|length>3 and ev_id==135 %}
+                        <h1 class="text">Family tree:</h1>
+                        <table id="familyTree">
+                            <tr>
+                                <td colspan="2"><img src="../static/sprites/gif/265.gif"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><h3 class="text">{{familyTuple[0][1]|title}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" id="downArrowRow"><i class="downArrow down"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td class="sameRow"><img src="../static/sprites/gif/266.gif"></td>
+                                <td class="sameRow"><img src="../static/sprites/gif/268.gif"></td>
+                            </tr>
+                            <tr>
+                                <td><h3 class="text">{{familyTuple[1][1]|title}}</td>
+                                <td><h3 class="text">{{familyTuple[3][1]|title}}</td>
+                            </tr>
+                            <tr>
+                                <td id="downArrowRow"><i class="downArrow down"></i></td>
+                                <td id="downArrowRow"><i class="downArrow down"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td class="sameRow"><img src="../static/sprites/gif/267.gif"></td>
+                                <td class="sameRow"><img src="../static/sprites/gif/269.gif"></td>
+                            </tr>
+                            <tr>
+                                <td><h3 class="text">{{familyTuple[2][1]|title}}</td>
+                                <td><h3 class="text">{{familyTuple[4][1]|title}}</td>
+                            </tr>
+
+
+                        </table>
+                        
+                        <!--Handle edge case: 6 different evolutions-->
+                        {% elif familyTuple|length>3 and ev_id==67 %}
+                        <h1 class="text">Family tree:</h1>
+                        <table id="familyTree">
+                            <tr>
+                                <td colspan="7"><img src="../static/sprites/gif/133.gif"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="7"><h3 class="text">{{familyTuple[0][1]|title}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="7" id="downArrowRow"><i class="downArrow down"></i></td>
+                            </tr>
+
+                            <tr>
+                                <td class="sameRow"><img src="../static/sprites/gif/134.gif"></td>
+                                <td class="sameRow"><img src="../static/sprites/gif/135.gif"></td>
+                                <td class="sameRow"><img src="../static/sprites/gif/136.gif"></td>
+                                <td class="sameRow"><img src="../static/sprites/gif/196.gif"></td>
+                                <td class="sameRow"><img src="../static/sprites/gif/197.gif"></td>
+                                <td class="sameRow"><img src="../static/sprites/gif/470.gif"></td>
+                                <td class="sameRow"><img src="../static/sprites/gif/471.gif"></td>
+
+                            </tr>
+                            <tr>
+                                <td><h3 class="text">{{familyTuple[1][1]|title}}</td>
+                                <td><h3 class="text">{{familyTuple[2][1]|title}}</td>
+                                <td><h3 class="text">{{familyTuple[3][1]|title}}</td>
+                                <td><h3 class="text">{{familyTuple[4][1]|title}}</td>
+                                <td><h3 class="text">{{familyTuple[5][1]|title}}</td>
+                                <td><h3 class="text">{{familyTuple[6][1]|title}}</td>
+                                <td><h3 class="text">{{familyTuple[7][1]|title}}</td>
+                            </tr>
+                        </table>
+                        {% endif %}
+                    </div>
 
                 </div>
             

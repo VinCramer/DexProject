@@ -95,8 +95,12 @@ body{
     -webkit-transform: rotate(-45deg);
 }
 
+.down{
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
 i {
-   
     display: inline-block;
     padding: 3px;
 }
@@ -109,6 +113,15 @@ i {
 .innerArrow{
     border: solid #50d878;
     border-width: 0 5px 5px 0;
+}
+
+.downArrow{
+    border: solid black;
+    border-width: 0 5px 5px 0;
+}
+
+#downArrowRow{
+    padding-bottom:20px;
 }
 
 button:hover {
@@ -134,4 +147,17 @@ button:hover {
 
 .mainPageText{
     display:inline;
+}
+
+#familyTree{
+    margin-left:auto;
+    margin-right:auto;
+}
+#statDisplay{
+    text-align:left;
+}
+
+.sameRow{
+    padding-left:20px;
+    padding-right: 20px;
 }

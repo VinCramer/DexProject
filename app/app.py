@@ -25,7 +25,7 @@ def home():
 
 #404 error handling
 @app.errorhandler(404)
-def page_not_found():
+def page_not_found(e):
     return render_template("404.html")
 
 #Loads the database
@@ -199,15 +199,18 @@ def displayEntry(num):
     #if user is at the first entry, there's no entry before that
     if num-1>0:
         cursor.execute("SELECT identifier FROM pokemon_species where id="+str(num-1))
-        prevName = cursor.fetchone()[0].title()
+        prevName = cursor.fetchone()[0]
         prevImg="../static/sprites/pc-sprites/"+prevName+".png"
+        prevName=prevName.title()
 
     #if user is at last entry, there's no entry behind that
     if num+1<649:
         cursor.execute("SELECT identifier FROM pokemon_species where id="+str(num+1))
-        nextName = cursor.fetchone()[0].title()
+        nextName = cursor.fetchone()[0]
         nextImg="../static/sprites/pc-sprites/"+nextName+".png"
+        nextName=nextName.title()
     
+
     #gets lists of numbers and names of monsters for each generation to be displayed in select tags
     list1=getGen1(cursor)
     list2=getGen2(cursor)
@@ -235,7 +238,21 @@ def displayEntry(num):
     spd=getStat(cursor, num, 6)
     spdClass=getStatClass(spd)
 
+    #gets a tuple of all of the monsters that the current one could've evolved from or could evolve into
+    familyTuple = getFamilyTuple(cursor, num)
 
+    #used for determining which family tree we're dealing with in table
+    ev_id=getEvId(cursor,num)
+
+    # used for seeing if 1 monster has 2 split evolution paths, for 3 total monsters.
+    oneTwoSplit = getOneTwoSplit(num)
+
+    #used for determining the order of certain family trees which had lower-tiered monsters 
+    # added later chronologically in the series
+    differentEvoOrder = getDifferentEvoOrder(num)
+
+    #TODO - add missing next/prev sprites!
+    
     #displays the webpage with all given variables
     return render_template("dex-entry.html", pageHeading=title, imgLocation=imgLocation, name=name, 
         type1=type1, type2=type2, ability1=ability1, ability2=ability2, hidden=hidden, 
@@ -244,7 +261,46 @@ def displayEntry(num):
         prevImg=prevImg, nextImg=nextImg, list1=list1, list2=list2, list3=list3, list4=list4, 
         list5=list5, hp=hp, hpClass=hpClass, atk=atk, spAtk=spAtk, spDef=spDef, defense=defense, spd=spd,
         spdClass=spdClass, atkClass=atkClass, spAtkClass=spAtkClass, spDefClass=spDefClass, 
-        defenseClass=defenseClass)
+        defenseClass=defenseClass, familyTuple=familyTuple, ev_id=ev_id, oneTwoSplit=oneTwoSplit,
+        differentEvoOrder = differentEvoOrder)
+
+#returns true if the current index is 1 of the few species that had a precursor monster added later
+def getDifferentEvoOrder(num):
+    return (num==25 or num==26 or num == 172 
+        or num==173 or num==35 or num==36
+        or num==174 or num==39 or num==40
+        or num==238 or num==124
+        or num==239 or num==125 or num==466
+        or num==240 or num==126 or num==467
+        or num==298 or num==183 or num==184
+        or num==360 or num==202
+        or num==406 or num==315 or num==407
+        or num==433 or num==538
+        or num==438 or num==185
+        or num==439 or num==122
+        or num==446 or num==143
+        or num==458 or num==226)
+
+# returns true if the monster has a base form that can turn 1 of 2 forms, for a total of 3 
+# in the family tree
+def getOneTwoSplit(num):
+    return (num==79 or num==80 or num==199 or 
+        (num>=290 and num<=292) or 
+        num==361 or num==362 or 
+        num==479 or 
+        (num>=366 and num<=368) or 
+        (num>=412 and num<=414))
+
+#gets evolution id for creature at given index
+def getEvId(cursor, num):
+    cursor.execute("SELECT evolution_chain_id FROM pokemon_species WHERE id="+str(num))
+    return cursor.fetchone()[0]
+
+#returns a list of the number and name(s) of all species the current monster could've evolved to or from
+def getFamilyTuple(cursor, num):
+    cursor.execute("SELECT id, identifier FROM pokemon_species WHERE"+
+    " evolution_chain_id=(SELECT evolution_chain_id FROM pokemon_species where id="+str(num)+")")
+    return cursor.fetchall()
 
 
 #returns a list, where each item is the number and name of a monster from gen 1 (1-151)
