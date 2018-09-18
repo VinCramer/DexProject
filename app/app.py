@@ -204,7 +204,7 @@ def displayEntry(num):
         prevName=prevName.title()
 
     #if user is at last entry, there's no entry behind that
-    if num+1<649:
+    if num+1<=649:
         cursor.execute("SELECT identifier FROM pokemon_species where id="+str(num+1))
         nextName = cursor.fetchone()[0]
         nextImg="../static/sprites/pc-sprites/"+nextName+".png"
