@@ -15,6 +15,8 @@ body{
     display:block;
 }
 
+
+
 #top-dex{
     overflow:hidden; 
     background-color:#FF0000;
@@ -130,7 +132,7 @@ button:hover {
 }
 
 .topSelect{
-    display:inline-block;
+    display:table-cell;
     text-align:center;
     margin-left:2%;
     margin-right:2%;
@@ -141,8 +143,18 @@ button:hover {
     margin-left:auto;
     margin-right:auto;
     text-align:center;
-    display:inline-block;
+    display:table;
     width:100%;
+    table-layout: fixed;
+}
+
+#searchBar{
+    margin-top: 5%;
+    text-align:center;
+}
+
+#autocomplete{
+    width:80%;
 }
 
 .mainPageText{
@@ -153,6 +165,7 @@ button:hover {
     margin-left:auto;
     margin-right:auto;
 }
+
 #statDisplay{
     text-align:left;
 }

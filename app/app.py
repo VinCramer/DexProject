@@ -263,6 +263,8 @@ def displayEntry(num):
         defenseClass=defenseClass, familyTuple=familyTuple, ev_id=ev_id, oneTwoSplit=oneTwoSplit,
         differentEvoOrder = differentEvoOrder)
 
+
+
 #returns true if the current index is 1 of the few species that had a precursor monster added later
 def getDifferentEvoOrder(num):
     return (num==25 or num==26 or num == 172 

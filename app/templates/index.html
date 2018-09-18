@@ -5,6 +5,11 @@
         <title>Dex Homepage</title>
         <link rel="icon" href="../static/images/favicon.ico">
         <link rel="stylesheet" type="text/css" href="../static/css/dex.css">
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="stylesheet" 
+        href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>  
     </head>
 
     <body>
@@ -17,7 +22,11 @@
         <h3 class="text">This website contains the name, number, types, base stats, and species data for over 
             650 monsters.</h3>
 
-        <div align="center" id="groupSelectors">
+        <div>
+            <input id="autocomplete" placeholder="Search by name...">
+        </div>
+
+        <div id="groupSelectors">
             <select name="Gen 1" class="topSelect" onchange="location=this.value">
                 {% for item in list1 %}
                     <option value="/{{loop.index}}">{{item}} </option>
@@ -50,6 +59,8 @@
         
         </div>
 
+
+        <script defer src="../static/js/script.js"> </script>
 
     </body>
 
