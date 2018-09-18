@@ -251,7 +251,6 @@ def displayEntry(num):
     # added later chronologically in the series
     differentEvoOrder = getDifferentEvoOrder(num)
 
-    #TODO - add missing next/prev sprites!
     
     #displays the webpage with all given variables
     return render_template("dex-entry.html", pageHeading=title, imgLocation=imgLocation, name=name, 

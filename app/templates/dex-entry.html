@@ -134,7 +134,8 @@
                         <table id="familyTree">
                         
                         <tr>
-                            <td><img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></td>
+                            <td><a href="/{{familyTuple[2][0]}}">
+                                <img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></a></td>
                         </tr>
                     
                         <tr>
@@ -146,7 +147,8 @@
                         </tr>
 
                         <tr>
-                            <td><img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></td>
+                            <td><a href="/{{familyTuple[0][0]}}">
+                                <img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></a></td>
                         </tr>
                         
                         <tr>
@@ -158,7 +160,8 @@
                         </tr>
 
                         <tr>
-                            <td><img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif"></td>
+                            <td><a href="/{{familyTuple[1][0]}}">
+                                <img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif"></a></td>
                         </tr>
                         
                         <tr>
@@ -172,17 +175,19 @@
                         {% elif differentEvoOrder %}
                         <h1 class="text">Family tree:</h1>
                         <table id="familyTree">
-                            {% if familyTuple[0][0]== 25 or familyTuple[0][0]== 35 or familyTuple[0][0]== 39 or
-                                familyTuple[0][0]== 183 %}
+                            {% if familyTuple[0][0]== 25 or familyTuple[0][0]== 35 or 
+                                familyTuple[0][0]== 39 or familyTuple[0][0]== 183 %}
                             <tr>
-                                <td><img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></td></td>
+                                <td><a href="/{{familyTuple[2][0]}}">
+                                    <img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></a></td>
                             </tr>
                             <tr>
                                 <td><h3 class="text">{{familyTuple[2][1]|title}}</h3></td>
                             </tr>
                             {% else %}
                             <tr>
-                                <td><img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif"></td></td>
+                                <td><a href="/{{familyTuple[1][0]}}">
+                                    <img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif"></a></td>
                             </tr>
                             <tr>
                                 <td><h3 class="text">{{familyTuple[1][1]|title}}</h3></td>
@@ -195,9 +200,11 @@
                             
                             <tr>
                                 {% if familyTuple[0][0]<100 %}
-                                <td><img src="../static/sprites/gif/0{{familyTuple[0][0]}}.gif"></td></td>
+                                <td><a href="/{{familyTuple[0][0]}}">
+                                    <img src="../static/sprites/gif/0{{familyTuple[0][0]}}.gif"></a></td>
                                 {% else %}
-                                <td><img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></td></td>
+                                <td><a href="/{{familyTuple[0][0]}}">
+                                    <img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></a></td>
                                 {% endif %}
                             </tr>
                             <tr>
@@ -212,20 +219,24 @@
                                 familyTuple[0][0]== 39 or familyTuple[0][0]== 183 %}
                             <tr>
                                 {% if familyTuple[1][0]<100 %}
-                                <td><img src="../static/sprites/gif/0{{familyTuple[1][0]}}.gif"></td></td>
+                                <td><a href="/{{familyTuple[1][0]}}">
+                                    <img src="../static/sprites/gif/0{{familyTuple[1][0]}}.gif"></a></td>
                                 {% else %}
-                                <td><img src="../static/sprites/gif/{{familyTuple[q][0]}}.gif"></td></td>
+                                <td><a href="/{{familyTuple[1][0]}}"></a>
+                                    <img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif"></a></td>
                                 {% endif %}
-                                </tr>
+                            </tr>
                             <tr>
-                                        <td><h3 class="text">{{familyTuple[1][1]|title}}</h3></td>
-                                    </tr>
+                                <td><h3 class="text">{{familyTuple[1][1]|title}}</h3></td>
+                            </tr>
                                 {% else %}
                             <tr>
                                 {% if familyTuple[2][0]<100 %}
-                                <td><img src="../static/sprites/gif/0{{familyTuple[2][0]}}.gif"></td></td>
+                                <td><a href="/{{familyTuple[2][0]}}">
+                                    <img src="../static/sprites/gif/0{{familyTuple[2][0]}}.gif"></a></td>
                                 {% else %}
-                                <td><img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></td></td>
+                                <td><a href="/{{familyTuple[2][0]}}">
+                                    <img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></a></td>
                                 {% endif %}
                             </tr>
                             <tr>
@@ -242,11 +253,14 @@
                                 {% for item in familyTuple %}
                                 <tr>
                                     {% if item[0] < 10 %}
-                                    <td><img src="../static/sprites/gif/00{{item[0]}}.gif"></td>
+                                    <td><a href="/{{item[0]}}">
+                                        <img src="../static/sprites/gif/00{{item[0]}}.gif"></a></td>
                                     {% elif item[0] < 100 %}
-                                    <td><img src="../static/sprites/gif/0{{item[0]}}.gif"></td>
+                                    <td><a href="/{{item[0]}}">
+                                        <img src="../static/sprites/gif/0{{item[0]}}.gif"></a></td>
                                     {% else %}
-                                    <td><img src="../static/sprites/gif/{{item[0]}}.gif"></td>
+                                    <td><a href="/{{item[0]}}">
+                                        <img src="../static/sprites/gif/{{item[0]}}.gif"></a></td>
                                     {% endif %}
                                 </tr>
                                 <tr>
@@ -267,7 +281,8 @@
                             <table id="familyTree">
                                 <tr>
                                     <td colspan=3>
-                                        <img src="../static/sprites/gif/236.gif"></td>
+                                        <a href="/236">
+                                        <img src="../static/sprites/gif/236.gif"></a></td>
                                 </tr>
                                 <tr>
                                     <td colspan=3><h3 class="text">{{familyTuple[2][1]|title}}</h3></td>
@@ -277,9 +292,17 @@
                                 </tr>
 
                                 <tr>
-                                    <td class="sameRow"><img src="../static/sprites/gif/106.gif"></td>
-                                    <td class="sameRow"><img src="../static/sprites/gif/107.gif"></td>
-                                    <td class="sameRow"><img src="../static/sprites/gif/237.gif"></td>
+                                    <td class="sameRow">
+                                            <a href="/106">
+                                        <img src="../static/sprites/gif/106.gif"></a></td>
+
+                                    <td class="sameRow">
+                                            <a href="/107">
+                                        <img src="../static/sprites/gif/107.gif"></a></td>
+
+                                    <td class="sameRow">
+                                            <a href="/237">
+                                        <img src="../static/sprites/gif/237.gif"></a></td>
                                 </tr>
                                 <tr>
                                     <td><h3 class="text sameRow">{{familyTuple[0][1]|title}}</td>
@@ -296,9 +319,11 @@
                             <tr>
                                 <td colspan="2">
                                     {% if familyTuple[0][0]<100 %}
-                                    <img src="../static/sprites/gif/0{{familyTuple[0][0]}}.gif"></td>
+                                    <a href="/{{familyTuple[0][0]}}">
+                                    <img src="../static/sprites/gif/0{{familyTuple[0][0]}}.gif"></a></td>
                                     {%else%}
-                                    <img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></td>
+                                    <a href="/{{familyTuple[0][0]}}">
+                                    <img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></a></td>
                                     {%endif%}
                             </tr>
                             <tr>
@@ -311,9 +336,12 @@
                             <tr>
                                 <td colspan="2">
                                         {% if familyTuple[1][0]<100 %}
-                                        <img src="../static/sprites/gif/0{{familyTuple[1][0]}}.gif"></td>
+                                        <a href="/{{familyTuple[1][0]}}">
+                                        <img src="../static/sprites/gif/0{{familyTuple[1][0]}}.gif"></a>
+                                    </td>
                                         {%else%}
-                                        <img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif"></td>
+                                        <a href="/{{familyTuple[1][0]}}">
+                                        <img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif"></a></td>
                                         {%endif%}
                             </tr>
                             <tr>
@@ -326,12 +354,15 @@
                             <tr>
                                 <td class="sameRow">
                                     {% if familyTuple[2][0]<100 %}
-                                    <img src="../static/sprites/gif/0{{familyTuple[2][0]}}.gif"></td>
+                                    <a href="/{{familyTuple[2][0]}}">
+                                    <img src="../static/sprites/gif/0{{familyTuple[2][0]}}.gif"></a></td>
                                     {%else%}
-                                    <img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></td>
+                                    <a href="/{{familyTuple[2][0]}}">
+                                    <img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></a></td>
                                     {%endif%}
                                 <td class="sameRow">
-                                    <img src="../static/sprites/gif/{{familyTuple[3][0]}}.gif"></td>
+                                        <a href="/{{familyTuple[3][0]}}">
+                                    <img src="../static/sprites/gif/{{familyTuple[3][0]}}.gif"></a></td>
                             </tr>
                             <tr>
                                 <td ><h3 class="text">{{familyTuple[2][1]|title}}</td>
@@ -345,9 +376,11 @@
                         <table id="familyTree">
                         <tr>
                             {% if familyTuple[0][0]<100 %}
-                                <td colspan="2"><img src="../static/sprites/gif/0{{familyTuple[0][0]}}.gif"></td>
+                                <td colspan="2"><a href="/{{familyTuple[0][0]}}">
+                                    <img src="../static/sprites/gif/0{{familyTuple[0][0]}}.gif"></a></td>
                             {%else%}
-                                <td colspan="2"><img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></td>
+                                <td colspan="2"><a href="/{{familyTuple[0][0]}}">
+                                    <img src="../static/sprites/gif/{{familyTuple[0][0]}}.gif"></a></td>
                             {%endif%}
                         </tr>
                             <td colspan="2"><h3 class="text">{{familyTuple[0][1]|title}}</td>                        
@@ -358,13 +391,16 @@
                         <tr>
                             <td class="sameRow">
                                 {% if familyTuple[1][0]<100 %}
-                                    <img src="../static/sprites/gif/0{{familyTuple[1][0]}}.gif">
+                                <a href="/{{familyTuple[1][0]}}">
+                                    <img src="../static/sprites/gif/0{{familyTuple[1][0]}}.gif"></a>
                                 {% else %}
-                                    <img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif">
+                                <a href="/{{familyTuple[1][0]}}">
+                                    <img src="../static/sprites/gif/{{familyTuple[1][0]}}.gif"></a>
                                 {%endif%}
                             </td>
                             <td class="sameRow">
-                                <img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif">
+                                    <a href="/{{familyTuple[2][0]}}">
+                                <img src="../static/sprites/gif/{{familyTuple[2][0]}}.gif"></a>
                             </td>
                         </tr>
                         <tr>
@@ -379,7 +415,8 @@
                         <h1 class="text">Family tree:</h1>
                         <table id="familyTree">
                             <tr>
-                                <td colspan="2"><img src="../static/sprites/gif/265.gif"></td>
+                                <td colspan="2"><a href="/265">
+                                    <img src="../static/sprites/gif/265.gif"></a></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><h3 class="text">{{familyTuple[0][1]|title}}</td>
@@ -389,8 +426,10 @@
                             </tr>
 
                             <tr>
-                                <td class="sameRow"><img src="../static/sprites/gif/266.gif"></td>
-                                <td class="sameRow"><img src="../static/sprites/gif/268.gif"></td>
+                                <td class="sameRow"><a href="/266">
+                                    <img src="../static/sprites/gif/266.gif"></a></td>
+                                <td class="sameRow"><a href="/268">
+                                    <img src="../static/sprites/gif/268.gif"></a></td>
                             </tr>
                             <tr>
                                 <td><h3 class="text">{{familyTuple[1][1]|title}}</td>
@@ -402,8 +441,10 @@
                             </tr>
 
                             <tr>
-                                <td class="sameRow"><img src="../static/sprites/gif/267.gif"></td>
-                                <td class="sameRow"><img src="../static/sprites/gif/269.gif"></td>
+                                <td class="sameRow"><a href="/267">
+                                    <img src="../static/sprites/gif/267.gif"></a></td>
+                                <td class="sameRow"><a href="/269">
+                                    <img src="../static/sprites/gif/269.gif"></a></td>
                             </tr>
                             <tr>
                                 <td><h3 class="text">{{familyTuple[2][1]|title}}</td>
@@ -418,7 +459,8 @@
                         <h1 class="text">Family tree:</h1>
                         <table id="familyTree">
                             <tr>
-                                <td colspan="7"><img src="../static/sprites/gif/133.gif"></td>
+                                <td colspan="7"><a href="/133">
+                                    <img src="../static/sprites/gif/133.gif"></a></td>
                             </tr>
                             <tr>
                                 <td colspan="7"><h3 class="text">{{familyTuple[0][1]|title}}</td>
@@ -428,13 +470,20 @@
                             </tr>
 
                             <tr>
-                                <td class="sameRow"><img src="../static/sprites/gif/134.gif"></td>
-                                <td class="sameRow"><img src="../static/sprites/gif/135.gif"></td>
-                                <td class="sameRow"><img src="../static/sprites/gif/136.gif"></td>
-                                <td class="sameRow"><img src="../static/sprites/gif/196.gif"></td>
-                                <td class="sameRow"><img src="../static/sprites/gif/197.gif"></td>
-                                <td class="sameRow"><img src="../static/sprites/gif/470.gif"></td>
-                                <td class="sameRow"><img src="../static/sprites/gif/471.gif"></td>
+                                <td class="sameRow"><a href="/134">
+                                    <img src="../static/sprites/gif/134.gif"></a></td>
+                                <td class="sameRow"><a href="/135">
+                                    <img src="../static/sprites/gif/135.gif"></a></td>
+                                <td class="sameRow"><a href="/136">
+                                    <img src="../static/sprites/gif/136.gif"></a></td>
+                                <td class="sameRow"><a href="/196">
+                                    <img src="../static/sprites/gif/196.gif"></a></td>
+                                <td class="sameRow"><a href="/197">
+                                    <img src="../static/sprites/gif/197.gif"></a></td>
+                                <td class="sameRow"><a href="/470">
+                                    <img src="../static/sprites/gif/470.gif"></a></td>
+                                <td class="sameRow"><a href="/471">
+                                    <img src="../static/sprites/gif/471.gif"></a></td>
 
                             </tr>
                             <tr>
