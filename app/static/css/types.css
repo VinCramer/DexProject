@@ -269,3 +269,16 @@
     padding-left:1px;
     padding-right:2px;
 }
+
+.typeButton:hover{
+    background-color:white;
+    color:black;
+}
+
+.typeButton{
+    color:white;
+    background-color: #606060;
+    border:none;
+    border-radius:12px;
+    margin-left:-8px;
+}

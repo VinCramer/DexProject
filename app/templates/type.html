@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{typeName}}</title>
+        <link rel="icon" href="../static/images/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="../static/css/types.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/dex.css">
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="stylesheet" 
+        href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>  
+    </head>
+
+    <body>
+
+        <div id="searchBar">
+            <input id="autocomplete" placeholder="Search by name...">
+        </div>
+        
+        <div id="groupedSelectors">
+            <select name="Gen 1" class="topSelect" onchange="location=this.value">
+                {% for item in list1 %}
+                    <option value="/{{loop.index}}">{{item}} </option>
+                {% endfor %}
+            </select>
+        
+            <select name="Gen 2" class="topSelect" onchange="location=this.value">
+                {% for item in list2 %}
+                    <option value="/{{loop.index+151}}">{{item}}</option>
+                {% endfor %}
+            </select>
+        
+            <select name="Gen 3" class="topSelect" onchange="location=this.value">
+                {% for item in list3 %}
+                    <option value="/{{loop.index+251}}">{{item}}</option>
+                {% endfor %}
+            </select>
+        
+            <select name="Gen 4" class="topSelect" onchange="location=this.value">
+                {% for item in list4 %}
+                    <option value="/{{loop.index+386}}">{{item}}</option>
+                {% endfor %}
+            </select>
+        
+            <select name="Gen 5" class="topSelect" onchange="location=this.value">
+                {% for item in list5 %}
+                    <option value="/{{loop.index+493}}">{{item}}</option>
+                {% endfor %}
+            </select>
+        
+        </div>
+        
+        
+
+        <div style="text-align:center;padding-top:3%;">
+            <h3 class="text">The following are monsters of the 
+                <span id="{{typeName}}">{{typeName}}</span> type:</h3>
+            <table style="margin-left:auto;margin-right:auto; width:20%;text-align:left;color:white;
+            border:none;padding-top:1%;">
+                <tr>
+                    <th class="text">Number</th>
+                    <th class="text">Image</th>
+                    <th class="text">Name</th>
+                </tr>
+            {% for item in monsters %}
+                <tr>
+                <td><h4 class="text">#{{item[0]}}</h4></td>
+                <td><img src="../static/sprites/pc-sprites/{{item[1]}}.png"></td>
+                <td><a href="/{{item[0]}}">
+                    <button class="typeButton"><h4 class="text">{{item[1]}}</h4></button></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        </div>
+
+
+        <script defer src="../static/js/script.js"> </script>
+    </body>
+</html>

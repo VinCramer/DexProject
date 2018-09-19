@@ -4,11 +4,12 @@ import sqlite3
 #initializes the application
 app = Flask(__name__)
 
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 #location of the database file we're loading from
 DATABASE = 'static/database/pokedex.sqlite'
 
 #basic homepage
-#TODO- make it look nicer
 @app.route("/")
 def home():
     #accesses a cursor from the database
@@ -41,6 +42,55 @@ def close_connection(exception):
     db = getattr(g, '_database', None)
     if db is not None:
         db.close()
+
+
+#list which contains all valid values for types of monsters
+#NOTE: the index+1 is the type_id in the database
+validTypes = ["normal", "fighting", "flying", "poison", "ground", "rock",
+    "bug", "ghost", "steel", "fire", "water", "grass",  "electric", 
+    "psychic",  "ice",  "dragon",  "dark" ]
+ 
+@app.route("/<typeName>/")
+def showType(typeName):
+    
+    #if user enters in a non-valid type, we'll show them the error page.
+    if typeName.lower() not in validTypes:
+        return render_template("404.html")
+    
+    allOfSameType = getAllOfSameType(typeName)
+
+    typeName=typeName.lower().title()
+
+    #get cursor
+    cursor = get_db().cursor()
+
+    #gets lists of numbers and names of monsters for each generation to be displayed in select tags
+    list1=getGen1(cursor)
+    list2=getGen2(cursor)
+    list3=getGen3(cursor)
+    list4=getGen4(cursor)
+    list5=getGen5(cursor)
+
+    return render_template("type.html", monsters = allOfSameType, typeName=typeName, list1=list1, 
+        list2=list2, list3=list3, list4=list4, list5=list5)
+
+
+
+# returns a list of all of the monsters that have either the same primary or secondary type 
+# as the given type
+def getAllOfSameType(typeName):
+
+    #accesses a cursor from the database
+    cursor=get_db().cursor()
+
+    #we want the name and number of each monster of the same type
+    cursor.execute(
+        "SELECT id, identifier FROM pokemon_species WHERE id in "
+        +"(SELECT pokemon_id FROM pokemon_types WHERE type_id="+
+        str(validTypes.index(typeName.lower())+1)+")")
+
+    return cursor.fetchall()
+
 
 #Displays the entry for the pokemon of the given number
 #Right now, the entry consists solely of a picture. Will be updated to include more information.
