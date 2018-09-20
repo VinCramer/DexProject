@@ -1,6 +1,6 @@
 # DexProject
 
-This is a Python project using Flask for a web-based encyclopedia for all of the creatures from the world's most popular turn-based RPG video game. Each URL ending in a valid number will display an entry consisting of a .gif and information about each monster.
+This is a Python project using Flask and SQLite for a web-based encyclopedia for all of the creatures from the world's most popular turn-based RPG video game. Each URL ending in a valid number will display an entry consisting of a .gif and information about each monster.
 
 
 Below are images showing the layout of the project:
