@@ -31,6 +31,19 @@ Dex family:
 ![dex family](https://user-images.githubusercontent.com/32882792/45837560-9d70a680-bcdd-11e8-8c1b-011519e22960.PNG)
 Shows the order of evolution from monster to monster. Each monster's image can be clicked on to be taken to their dex entry page.
 
+All branching evolution paths are displayed in an easy to understand fashion. Below are the 2 most complex evolutionary paths for reference:
+
+Example 1:
+
+![branching ex 1](https://user-images.githubusercontent.com/32882792/45838182-1ae8e680-bcdf-11e8-95d3-048e294286d9.PNG)
+
+
+Example 2:
+
+![branching ex 2](https://user-images.githubusercontent.com/32882792/45838190-1e7c6d80-bcdf-11e8-8292-bfb51d82c9b8.PNG)
+
+
+
 Dex transitions:
 ![dex transitions](https://user-images.githubusercontent.com/32882792/45837568-a1042d80-bcdd-11e8-8320-0b6d8a6c5df1.PNG)
 Buttons at the bottom of the page to transition to the next or previous monster by number.
